@@ -1,0 +1,13 @@
+/** Favorite books:
+Catcher and the rye (3)
+Ten Thousand Hours (4)
+Of mice and men (5)
+**/
+
+CREATE TABLE books (id INTEGER PRIMARY KEY, name TEXT, rating INTEGER) ;
+--create a table to store your list of books. It should have columns for id, name, and rating.
+
+INSERT INTO books VALUES (1, "Catcher and the rye", 3);
+INSERT INTO books VALUES (2, "Ten Thousand Hours", 4);
+INSERT INTO books Values (3, "Of mice and men", 5);
+SELECT * FROM books;
