@@ -1,0 +1,34 @@
+--Movie stars: What movies are they in? Are they married to each other?
+--Singers: What songs did they write? Where are they from?
+--Authors: What books did they write?
+--Fictional characters: How are they related to other characters? What books do they show up in?
+CREATE TABLE people (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT);
+CREATE TABLE movies (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, star INTEGER);
+CREATE TABLE songs (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, author INTEGER);
+CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, author INTEGER);
+CREATE TABLE spouses (id INTEGER PRIMARY KEY AUTOINCREMENT, spouse1 INTEGER, spouse2 INTEGER);
+INSERT INTO people (name) VALUES ("Johnny West");
+INSERT INTO people (name) VALUES ("Richard Lun");
+INSERT INTO people (name) VALUES ("Rocky Bal");
+INSERT INTO people (name) VALUES ("Jack Sparrow");
+INSERT INTO people (name) VALUES ("Piper Ret");
+INSERT INTO people (name) VALUES ("Adrien Paulie");
+INSERT INTO people (name) VALUES ("Suzie Doo");
+INSERT INTO people (name) VALUES ("Liz Borden");
+INSERT INTO movies (name, star) VALUES ("The Rock", "1");
+INSERT INTO movies (name, star) VALUES ("Cannibal", "2");
+INSERT INTO movies (name, star) VALUES ("Eat", "3");
+INSERT INTO songs (name, author) VALUES ("Going Down", "4");
+INSERT INTO songs (name, author) VALUES ("When", "5");
+INSERT INTO songs (name, author) VALUES ("Big Cat", "6");
+INSERT INTO books (name, author) VALUES ("From Whence", "7");
+INSERT INTO books (name, author) VALUES ("Somme", "8");
+INSERT INTO books (name, author) VALUES ("How To", "1");
+INSERT INTO spouses (spouse1,spouse2) VALUES ("1","8");
+INSERT INTO spouses (spouse1,spouse2) VALUES ("2","7");
+INSERT INTO spouses (spouse1,spouse2) VALUES ("3","6");
+INSERT INTO spouses (spouse1,spouse2) VALUES ("4","5");
+SELECT a.name, b.name FROM spouses JOIN people a ON spouse1=a.id JOIN people b ON spouse2=b.id;
+SELECT movies.name AS Movie, people.name AS Actor FROM movies JOIN people ON movies.star=people.id;
+SELECT books.name AS Book,people.name AS Author FROM books JOIN people ON books.id=people.id;
+SELECT songs.name AS Song,people.name AS Singer FROM songs JOIN people ON songs.id=people.id;
